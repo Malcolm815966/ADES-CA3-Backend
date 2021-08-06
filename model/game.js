@@ -14,22 +14,6 @@ const gameDB = {
     displayAllGames: function () {
         const findAllGamesQuery = "SELECT * FROM game;";
         return db.query(findAllGamesQuery)
-        var dbConn = db.getConnection();
-        dbConn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                callback(err, null);
-            } else {
-                dbConn.query(findAllGamesQuery, (error, results) => {
-                    dbConn.end();
-                    if (error) {
-                        callback(error, null);
-                    } else {
-                        callback(null, results);
-                    }
-                });
-            }
-        });
     },
 
     searchForGame: function (title, price, platform, callback) {

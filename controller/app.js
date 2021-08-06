@@ -12,7 +12,7 @@ const JWT_SECRET = require("../config.js");
 const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");
 var app = express();
 var cors = require('cors');
-var { init } = require("../model/databaseConfig")
+var { init, insertTable } = require("../model/databaseConfig")
 
 app.options('*', cors());
 app.use(cors());
@@ -21,7 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // To reset the database, run the init() method:
-// init();
+init();
+insertTable();
 
 // Login Endpoint
 app.post('/user/login', function (req, res) {

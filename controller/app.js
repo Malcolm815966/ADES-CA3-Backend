@@ -21,8 +21,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // To reset the database, run the init() method:
-init();
-insertTable();
+// init();
+// insertTable();
 
 // Login Endpoint
 app.post('/user/login', function (req, res) {

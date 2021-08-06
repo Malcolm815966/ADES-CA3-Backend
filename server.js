@@ -3,7 +3,7 @@
 // Name: Malcolm Ng
 
 var app = require("./controller/app");
-var port = 3000;
+const PORT = process.env.PORT || 3000;
 var hostname = "localhost";
 
 var server = app.listen(port, () => {

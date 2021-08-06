@@ -6,34 +6,20 @@ const db = require("./databaseConfig");
 
 const gameDB = {
 
-    displayAllPlatforms: function (callback) {
-        var dbConn = db.getConnection();
-        dbConn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                callback(err, null);
-            } else {
-                const findAllPlatformsQuery = "SELECT DISTINCT platform FROM game ORDER BY gameid;";
-                dbConn.query(findAllPlatformsQuery, (error, results) => {
-                    dbConn.end();
-                    if (error) {
-                        callback(error, null);
-                    } else {
-                        callback(null, results);
-                    }
-                });
-            }
-        });
+    displayAllPlatforms: function () {
+        const findAllPlatformsQuery = "SELECT DISTINCT platform FROM game ORDER BY gameid;";
+        return db.query(findAllPlatformsQuery)
     },
 
-    displayAllGames: function (callback) {
+    displayAllGames: function () {
+        const findAllGamesQuery = "SELECT * FROM game;";
+        return db.query(findAllGamesQuery)
         var dbConn = db.getConnection();
         dbConn.connect(function (err) {
             if (err) {
                 console.log(err);
                 callback(err, null);
             } else {
-                const findAllGamesQuery = "SELECT * FROM game;";
                 dbConn.query(findAllGamesQuery, (error, results) => {
                     dbConn.end();
                     if (error) {

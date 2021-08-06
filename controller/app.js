@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 // insertTable();
 
 // Login Endpoint
-app.post('/user/login', function (req, res) {
+app.post('https://ades-ca3-backendserver.herokuapp.com/user/login', function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
 

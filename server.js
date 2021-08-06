@@ -6,6 +6,6 @@ var app = require("./controller/app");
 const PORT = process.env.PORT || 3000;
 var hostname = "localhost";
 
-var server = app.listen(port, () => {
+var server = app.listen(PORT, () => {
     console.log(`BackEnd Server Hosted at http://${hostname}:${port}`);
 });

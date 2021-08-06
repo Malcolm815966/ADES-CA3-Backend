@@ -5,33 +5,14 @@
 const db = require("./databaseConfig");
 
 const categoryDB = {
-
-    addCategories: function (catname, description, callback) {
-        var dbConn = db.getConnection();
-        dbConn.connect(function (err) {
-            if (err) {
-                console.log(err);
-                callback(err, null);
-            } else {
-                const addCategoryQuery =
-                    `
+    addCategories: function (catname, description) {
+        const addCategoryQuery =
+            `
             INSERT INTO category (catname, description)
             VALUES (?, ?);
             `;
-                dbConn.query(
-                    addCategoryQuery,
-                    [catname, description],
-                    (error, results) => {
-                        dbConn.end();
-                        if (error) {
-                            callback(error, null);
-                        } else {
-                            callback(null, results);
-                        }
-                    });
-            }
-        });
-    },
+        return db.query(addCategoryQuery, [catname, description])
+    }
 }
 
 module.exports = categoryDB;

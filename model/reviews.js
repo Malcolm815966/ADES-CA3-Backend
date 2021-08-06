@@ -5,35 +5,7 @@
 const db = require("./databaseConfig");
 
 const gameDB = {
-    // Endpoint 10
-    // addNewReview: function (newUserObject, userid, gameid, callback) {
-    //     var dbConn = db.getConnection();
-    //     dbConn.connect(function (err) {
-    //         if (err) {
-    //             console.log(err);
-    //             callback(err, null);
-    //         } else {
-    //             var { content, rating } = newUserObject;
-    //             const insertUserQuery =
-    //                 `
-    //         INSERT INTO reviews (content, rating, userid, gameid)
-    //         VALUES (?, ?, ?, ?);
-    //         `;
-    //             dbConn.query(
-    //                 insertUserQuery,
-    //                 [content, rating, userid, gameid],
-    //                 (error, results) => {
-    //                     dbConn.end();
-    //                     if (error) {
-    //                         callback(error, null);
-    //                     } else {
-    //                         callback(null, results.insertId);
-    //                     }
-    //                 });
-    //         }
-    //     });
-    // },
-
+    
     displayGameReviews: function (gameid, callback) {
         var dbConn = db.getConnection();
         dbConn.connect(function (err) {

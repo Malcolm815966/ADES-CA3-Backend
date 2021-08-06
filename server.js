@@ -7,5 +7,5 @@ const PORT = process.env.PORT || 3000;
 var hostname = "localhost";
 
 var server = app.listen(PORT, () => {
-    console.log(`BackEnd Server Hosted at http://${hostname}:${port}`);
+    console.log(`Our app is running on port ${ PORT }`);
 });

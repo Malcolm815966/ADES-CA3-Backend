@@ -2,14 +2,14 @@
 // Admission Number: p2020994
 // Name: Malcolm Ng
 
-var express = require("express");
-const jwt = require("jsonwebtoken");
-const JWT_SECRET = require("../config.js");
-const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");
-var app = express();
-var cors = require('cors');
+import express from ("express");
+import isLoggedInMiddleware from ("../auth/isLoggedInMiddleware");
 import { scripts } from "../model/scripts";
 // var { scripts } = require("../model/scripts")
+var app = express();
+var cors = require('cors');
+// const jwt = require("jsonwebtoken");
+// const JWT_SECRET = require("../config.js");
 
 app.options('*', cors());
 app.use(cors());

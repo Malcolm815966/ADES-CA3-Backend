@@ -8,8 +8,8 @@ const JWT_SECRET = require("../config.js");
 const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");
 var app = express();
 var cors = require('cors');
-// import { scripts } from "../model/scripts";
-var { scripts } = require("../model/scripts")
+import { scripts } from "../model/scripts";
+// var { scripts } = require("../model/scripts")
 
 app.options('*', cors());
 app.use(cors());

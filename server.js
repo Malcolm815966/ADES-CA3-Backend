@@ -3,7 +3,7 @@
 // Name: Malcolm Ng
 
 // var app = require("./controller/app");
-import app from "./controller/app"
+import { app } from "./controller/app"
 const PORT = process.env.PORT || 3000;
 var hostname = "localhost";
 

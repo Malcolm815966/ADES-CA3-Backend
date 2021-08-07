@@ -3,10 +3,10 @@
 // Name: Malcolm Ng
 
 var express = require("express");
-var user = require("../model/user");
-var category = require("../model/category");
-var game = require("../model/game");
-var reviews = require("../model/reviews");
+// var user = require("../model/user");
+// var category = require("../model/category");
+// var game = require("../model/game");
+// var reviews = require("../model/reviews");
 const jwt = require("jsonwebtoken");
 const JWT_SECRET = require("../config.js");
 const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");

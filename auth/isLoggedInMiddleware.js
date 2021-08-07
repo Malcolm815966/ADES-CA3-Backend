@@ -24,5 +24,5 @@ export function check (req, res, next) {
         req.decodedToken = decodedToken;
         next();
     });
-};
+}
 // module.exports = check;

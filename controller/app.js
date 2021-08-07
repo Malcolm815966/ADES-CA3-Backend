@@ -3,7 +3,7 @@
 // Name: Malcolm Ng
 
 import express from "express";
-import isLoggedInMiddleware from "../auth/isLoggedInMiddleware";
+import { check } from "../auth/isLoggedInMiddleware";
 import { scripts } from "../model/scripts";
 // var { scripts } = require("../model/scripts")
 var app = express();
@@ -102,7 +102,7 @@ app.get("/displayGameReviews/:gameid", (req, res) => {
 });
 
 // Add Review
-app.post("/addReviews/:data", isLoggedInMiddleware, (req, res) => {
+app.post("/addReviews/:data", check, (req, res) => {
     console.log(req.decodedToken);
     console.log(req.decodedToken.type)
     var { content, rating, userid, gameid } = JSON.parse(req.params.data);
@@ -135,7 +135,7 @@ app.get("/displayAllCategories", (req, res) => {
 });
 
 // Add Game
-app.post("/addGames/:data", isLoggedInMiddleware, (req, res) => {
+app.post("/addGames/:data", check, (req, res) => {
     var { title, description, price, platform, year, categoryid, image_file } = JSON.parse(req.params.data);
     console.log(req.params.data)
 
@@ -154,7 +154,7 @@ app.post("/addGames/:data", isLoggedInMiddleware, (req, res) => {
 });
 
 // Add Category
-app.post("/addCategories/:data", isLoggedInMiddleware, (req, res) => {
+app.post("/addCategories/:data", check, (req, res) => {
     var { catname, description } = JSON.parse(req.params.data);
     console.log(req.params.data)
 

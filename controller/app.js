@@ -6,7 +6,7 @@ import express from "express";
 import { check } from "../auth/isLoggedInMiddleware";
 import { scripts } from "../model/scripts";
 // var { scripts } = require("../model/scripts")
-var app = express();
+const app = express();
 var cors = require('cors');
 // const jwt = require("jsonwebtoken");
 // const JWT_SECRET = require("../config.js");

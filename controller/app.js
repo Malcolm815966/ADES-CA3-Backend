@@ -12,7 +12,7 @@ const JWT_SECRET = require("../config.js");
 const isLoggedInMiddleware = require("../auth/isLoggedInMiddleware");
 var app = express();
 var cors = require('cors');
-var { init, insertTable } = require("../model/databaseConfig")
+var { scripts } = require("../model/scripts")
 
 app.options('*', cors());
 app.use(cors());
@@ -21,15 +21,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // To reset the database, run the init() method:
-// init();
-// insertTable();
+scripts.init();
+scripts.insertTable();
 
 // Login Endpoint
 app.post('/user/login', function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
 
-    user.loginUser(email, password, function (err, token, result) {
+    scripts.loginUser(email, password, function (err, token, result) {
         if (!err) {
             console.log(result);
             res.status(200).json({ success: true, UserData: JSON.stringify(result[0]), token: token, status: 'You are successfully logged in!' });
@@ -41,7 +41,7 @@ app.post('/user/login', function (req, res) {
 
 // Display All Platforms
 app.get("/displayAllPlatforms", (req, res) => {
-    game.displayAllPlatforms((error, results) => {
+    scripts.displayAllPlatforms((error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -53,7 +53,7 @@ app.get("/displayAllPlatforms", (req, res) => {
 
 // Display All Games
 app.get("/displayAllGames", (req, res) => {
-    game.displayAllGames((error, results) => {
+    scripts.displayAllGames((error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -68,7 +68,7 @@ app.get("/searchForGame/:data", (req, res) => {
     var { title, price, platform } = JSON.parse(req.params.data);
     console.log(req.params.data)
 
-    game.searchForGame(title, price, platform, (error, results) => {
+    scripts.searchForGame(title, price, platform, (error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -81,7 +81,7 @@ app.get("/searchForGame/:data", (req, res) => {
 // Display Game Details
 app.get("/displayGameDetails/:gameid", (req, res) => {
     var gameid = req.params.gameid;
-    game.displayGameDetails(gameid, (error, results) => {
+    scripts.displayGameDetails(gameid, (error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -94,7 +94,7 @@ app.get("/displayGameDetails/:gameid", (req, res) => {
 // Display Game Reviews
 app.get("/displayGameReviews/:gameid", (req, res) => {
     var gameid = req.params.gameid;
-    reviews.displayGameReviews(gameid, (error, results) => {
+    scripts.displayGameReviews(gameid, (error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -114,7 +114,7 @@ app.post("/addReviews/:data", isLoggedInMiddleware, (req, res) => {
     if (req.decodedToken.type != "Customer") {
         res.status(401).send()
     } else {
-        reviews.addReview(content, rating, userid, gameid, (error, results) => {
+        scripts.addReview(content, rating, userid, gameid, (error, results) => {
             if (error) {
                 res.status(500).send(error);
             } else {
@@ -127,7 +127,7 @@ app.post("/addReviews/:data", isLoggedInMiddleware, (req, res) => {
 
 // Display All Categories to add game
 app.get("/displayAllCategories", (req, res) => {
-    game.displayAllCategories((error, results) => {
+    scripts.displayAllCategories((error, results) => {
         if (error) {
             res.status(500).send(error);
         } else {
@@ -145,7 +145,7 @@ app.post("/addGames/:data", isLoggedInMiddleware, (req, res) => {
     if (req.decodedToken.type != "Admin") {
         res.status(401).send()
     } else {
-        game.addGame(title, description, price, platform, year, categoryid, image_file, (error, results) => {
+        scripts.addGame(title, description, price, platform, year, categoryid, image_file, (error, results) => {
             if (error) {
                 res.status(500).send(error);
             } else {
@@ -164,7 +164,7 @@ app.post("/addCategories/:data", isLoggedInMiddleware, (req, res) => {
     if (req.decodedToken.type != "Admin") {
         res.status(401).send()
     } else {
-        category.addCategories(catname, description, (error, results) => {
+        scripts.addCategories(catname, description, (error, results) => {
             if (error) {
                 res.status(500).send(error);
             } else {

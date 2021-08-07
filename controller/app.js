@@ -2,8 +2,8 @@
 // Admission Number: p2020994
 // Name: Malcolm Ng
 
-import express from ("express");
-import isLoggedInMiddleware from ("../auth/isLoggedInMiddleware");
+import express from "express";
+import isLoggedInMiddleware from "../auth/isLoggedInMiddleware";
 import { scripts } from "../model/scripts";
 // var { scripts } = require("../model/scripts")
 var app = express();
@@ -172,4 +172,7 @@ app.post("/addCategories/:data", isLoggedInMiddleware, (req, res) => {
     }
 });
 
-module.exports = app;
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Our app is running on port ${ PORT }`);
+});

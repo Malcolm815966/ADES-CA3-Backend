@@ -2,7 +2,8 @@
 // Admission Number: p2020994
 // Name: Malcolm Ng
 
-var app = require("./controller/app");
+// var app = require("./controller/app");
+import app from "./controller/app"
 const PORT = process.env.PORT || 3000;
 var hostname = "localhost";
 
